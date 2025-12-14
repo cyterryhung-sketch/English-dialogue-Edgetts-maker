@@ -1,23 +1,117 @@
-# dialogue_TTS_maker_English
-基于edgeTTS开发的对话式文字转文字 / Conversational text-to-text conversion developed based on edgeTTS
+# TTS 对话音频生成器 (Edge-TTS)
 
-直接在release下载 default.exe使用，不需要安装任何东西，png是教程，word文档是案例 / You can download it from release. Double click default.exe to use it. 
+一个基于 Edge-TTS 的图形界面应用程序，可以将对话文本转换为自然语音音频，并支持多个说话人、停顿控制和音频合并功能。
 
+## 功能特点
 
-1. 可以单独生成音频，每句话最后可以增加停顿秒数 [pause_5]代表停顿5秒；
-2. 可以选择英式英语或者美式英语，口音等；
-3. 最多可以满足4人对话；
+- 🗣️ **多说话人支持**：最多支持6个不同说话人（A-F），每个说话人都可以分配不同的声音
+- 🔊 **多样化声音**：提供来自美国和英国的多种英语男声和女声选择
+- ⏸️ **停顿控制**：在文本中使用 `[pause_X]` 标签添加自定义长度的停顿（X为秒数，支持小数）
+- 🎵 **音频处理**：可单独保存每个说话人的音频，也可以将所有音频合并为一个完整文件
+- 🖥️ **直观界面**：图形用户界面，易于操作和配置
+- 📁 **灵活输出**：自定义输出目录、文件命名格式和合并选项
 
-第一次在github发布，我是一名英语老师，不会编程，我是使用chatGPT+cursor编了这个文字转音频对话软件。
+## 系统要求
 
-网上有很多文字转音频文件，但是很少有对话形式的。作为英语老师，经常要给学生出听力题，因此需要有对话式的文字转音频软件。
+- Windows 7 或更高版本
+- Python 3.7+
+- 支持互联网连接（Edge-TTS 需要在线服务）
 
-如果需要和我交流，请加微信pypsam，或者邮件15179702@qq.com
+## 安装步骤
 
-1. Audio files can be generated individually, and a pause (in seconds) can be added at the end of each sentence – [pause_5] indicates a 5-second pause;
-2. British English or American English (including accents, etc.) can be selected;
-3. It supports up to 4-person conversational scenarios.
+1. 克隆或下载此仓库到本地计算机
 
-This is my first release on GitHub. I am an English teacher with no programming background—this conversational text-to-audio software was developed using ChatGPT and Cursor.
-While there are numerous text-to-audio tools available online, few support a conversational format. As an English teacher, I frequently need to create listening comprehension exercises for students, which is why I needed a conversational text-to-audio software.
-If you wish to connect with me, please add my WeChat ID: pypsam, or send an email to 15179702@qq.com.
+2. 安装所需的依赖包：
+   ```
+   pip install edge-tts numpy
+   ```
+
+3. （可选）为了获得更好的音频处理功能，建议安装额外的音频库：
+   ```
+   pip install librosa soundfile
+   ```
+
+## 使用方法
+
+1. 运行应用程序：
+   ```
+   python tts_V5.py
+   ```
+
+2. 在对话输入框中按照以下格式输入对话内容：
+   ```
+   A: 你好，欢迎收听我们的节目[pause_1]。
+   B: 今天我们邀请到了特别嘉宾。
+   C: 感谢你们的邀请，很高兴来到这里。
+   ```
+
+3. 为每个说话人（A-F）选择合适的声音
+
+4. 设置输出目录和其他选项：
+   - 合并所有音频到单个文件
+   - 合并后删除单独的音频文件
+   - 自定义合并文件名
+   - 自定义单独文件的命名格式
+
+5. 点击"GENERATE Audio"按钮开始生成音频
+
+6. 如需停止生成过程，可以点击"STOP Generation"按钮
+
+## 声音选项
+
+### 美式英语男声
+- Andrew (US)
+- Brian (US)
+- Christopher (US)
+- Roger (US)
+- Steffan (US)
+- Guy (US, 默认)
+
+### 美式英语女声
+- Ana (US)
+- Aria (US)
+- Ava (US)
+- Jenny (US, 默认)
+- Michelle (US)
+
+### 英式英语男声
+- Libby (UK)
+- Ryan (UK, 默认)
+
+### 英式英语女声
+- Sonia (UK)
+- Maisie (UK)
+
+## 输入格式说明
+
+对话必须按照以下格式输入：
+```
+说话人标识符: 对话内容[pause_数字]
+```
+
+例如：
+```
+A: 大家好，我是主持人[pause_2]今天我们要讨论一个重要话题。
+B: 是的，这确实是一个值得关注的问题[pause_1.5]我认为...
+```
+
+其中 `[pause_X]` 可以在任何文本位置插入，用于在该位置添加 X 秒的静音。
+
+## 输出选项
+
+1. **保存目录**：选择生成音频文件的保存位置
+2. **合并音频**：将所有单个音频片段合并为一个完整的音频文件
+3. **删除单个文件**：合并完成后自动删除单独的音频文件
+4. **合并文件名**：设置合并后文件的名称
+5. **单个文件格式**：使用 `{index}` 和 `{speaker}` 占位符自定义单个文件命名
+
+## 注意事项
+
+- 应用程序需要稳定的互联网连接才能正常工作
+- 如果未安装 `librosa` 和 `soundfile` 库，则无法生成停顿效果且音频合并功能受限
+- 推荐使用项目的虚拟环境运行此程序
+- 生成的音频文件为 WAV 格式
+
+## 许可证
+
+本项目仅供个人学习和研究使用，请遵守 Microsoft Edge TTS 服务的相关条款。
