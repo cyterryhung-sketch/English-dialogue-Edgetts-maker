@@ -40,9 +40,9 @@
 
 2. 在对话输入框中按照以下格式输入对话内容：
    ```
-   A: 你好，欢迎收听我们的节目[pause_1]。
-   B: 今天我们邀请到了特别嘉宾。
-   C: 感谢你们的邀请，很高兴来到这里。
+   A: Hello, welcome to our school.[pause_1]。
+   B: Part 2. Listen and choose the correct answer. 
+   C: Good morning。
    ```
 
 3. 为每个说话人（A-F）选择合适的声音
@@ -91,8 +91,9 @@
 
 例如：
 ```
-A: 大家好，我是主持人[pause_2]今天我们要讨论一个重要话题。
-B: 是的，这确实是一个值得关注的问题[pause_1.5]我认为...
+   A: Hello, welcome to our school.[pause_1]。
+   B: Part 2. Listen and choose the correct answer. 
+   C: Good morning。
 ```
 
 其中 `[pause_X]` 可以在任何文本位置插入，用于在该位置添加 X 秒的静音。
@@ -113,5 +114,6 @@ B: 是的，这确实是一个值得关注的问题[pause_1.5]我认为...
 - 生成的音频文件为 WAV 格式
 
 ## 许可证
+
 
 本项目仅供个人学习和研究使用，请遵守 Microsoft Edge TTS 服务的相关条款。
